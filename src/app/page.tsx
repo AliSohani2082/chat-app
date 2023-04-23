@@ -1,8 +1,8 @@
-import Image from "next/image";
-import { Inter } from "next/font/google";
+import { db } from "@/lib/db";
+import Button from "@/components/ui/Button";
 
-const inter = Inter({ subsets: ["latin"] });
+export default async function Home() {
+  await db.set("hello!!!", "hello");
 
-export default function Home() {
-  return <div>main</div>;
+  return <Button variant="ghost">Hello</Button>;
 }
