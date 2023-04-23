@@ -5,12 +5,16 @@ specifiers:
   '@types/react': 18.0.38
   '@types/react-dom': 18.0.11
   autoprefixer: 10.4.14
+  class-variance-authority: ^0.5.2
+  clsx: ^1.2.1
   eslint: 8.39.0
   eslint-config-next: 13.3.1
+  lucide-react: ^0.172.0
   next: 13.3.1
   postcss: 8.4.23
   react: 18.2.0
   react-dom: 18.2.0
+  tailwind-merge: ^1.12.0
   tailwindcss: 3.3.1
   typescript: 5.0.4
 
@@ -19,12 +23,16 @@ dependencies:
   '@types/react': 18.0.38
   '@types/react-dom': 18.0.11
   autoprefixer: 10.4.14_postcss@8.4.23
+  class-variance-authority: 0.5.2_typescript@5.0.4
+  clsx: 1.2.1
   eslint: 8.39.0
   eslint-config-next: 13.3.1_iacogk7kkaymxepzhgcbytyi7q
+  lucide-react: 0.172.0_react@18.2.0
   next: 13.3.1_biqbaboplfbrettd7655fr4n2y
   postcss: 8.4.23
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
+  tailwind-merge: 1.12.0
   tailwindcss: 3.3.1_postcss@8.4.23
   typescript: 5.0.4
 
@@ -589,8 +597,24 @@ packages:
       fsevents: 2.3.2
     dev: false
 
+  /class-variance-authority/0.5.2_typescript@5.0.4:
+    resolution: {integrity: sha512-j7Qqw3NPbs4IpO80gvdACWmVvHiLLo5MECacUBLnJG17CrLpWaQ7/4OaWX6P0IO1j2nvZ7AuSfBS/ImtEUZJGA==}
+    peerDependencies:
+      typescript: '>= 4.5.5 < 6'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dependencies:
+      typescript: 5.0.4
+    dev: false
+
   /client-only/0.0.1:
     resolution: {integrity: sha512-IV3Ou0jSMzZrd3pZ48nLkT9DA7Ag1pnPzaiQhpW7c3RbcqqzvzzVu+L8gfqMp/8IM2MQtSiqaCxrrcfu8I8rMA==}
+    dev: false
+
+  /clsx/1.2.1:
+    resolution: {integrity: sha512-EcR6r5a8bj6pu3ycsa/E/cKVGuTgZJZdsyUYHOksG/UHIiKfjxzRxYJpyVBwYaQeOvghal9fcc4PidlgzugAQg==}
+    engines: {node: '>=6'}
     dev: false
 
   /color-convert/2.0.1:
@@ -1681,6 +1705,14 @@ packages:
       yallist: 4.0.0
     dev: false
 
+  /lucide-react/0.172.0_react@18.2.0:
+    resolution: {integrity: sha512-Rpc0RSYGEFFrcT2toNjSzYKZ40rfc0D7vYp6C27e86Qyh5TwtPs5LS14hnjweH1REk45AFNeVnU+z+rXvb93ug==}
+    peerDependencies:
+      react: ^16.5.1 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.2.0
+    dev: false
+
   /merge2/1.4.1:
     resolution: {integrity: sha512-8q7VEgMJW4J8tcfVPy8g09NcQwZdbwFEqhe/WZkoIzjn/3TGDwtOCYtXGxA3O8tPzpczCCDgv+P2P5y00ZJOOg==}
     engines: {node: '>= 8'}
@@ -2322,6 +2354,10 @@ packages:
     dependencies:
       '@pkgr/utils': 2.3.1
       tslib: 2.5.0
+    dev: false
+
+  /tailwind-merge/1.12.0:
+    resolution: {integrity: sha512-Y17eDp7FtN1+JJ4OY0Bqv9OA41O+MS8c1Iyr3T6JFLnOgLg3EvcyMKZAnQ8AGyvB5Nxm3t9Xb5Mhe139m8QT/g==}
     dev: false
 
   /tailwindcss/3.3.1_postcss@8.4.23:
