@@ -1,0 +1,89 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int           @id @default(autoincrement())
+  name      String?
+  image     String?
+  email     String        @unique
+  emailVerified DateTime?
+  hashedPassword  String?
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+  accounts  Account[]  @relation("user_account")
+  sessions  Session[]  @relation("user_session")
+
+  connections Connection[] @relation("user_connections")
+  messages    Message[]    @relation("sender")
+}
+
+model Connection {
+  id       Int           @id @default(autoincrement())
+  name     String
+  users    User[]        @relation("user_connections")
+  messages Message[]     @relation("connection_messages")
+
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+}
+
+model Message {
+  id            Int        @id @default(autoincrement())
+  content       String
+  sentAt        DateTime   @default(now())
+  senderId      Int
+  connectionId  Int?
+  sender        User       @relation("sender", fields: [senderId], references: [id])
+  connection    Connection?@relation("connection_messages", fields: [connectionId], references: [id])
+
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+}
+
+
+model Account {
+  id                  Int      @id @default(autoincrement())
+  userId              Int
+  type                String
+  provider            String
+  providerAccountId   String
+  refresh_token       String?
+  access_token        String?
+  expires_at          Int?
+  token_type          String?
+  scope               String?
+  id_token            String?
+  session_state       String?
+
+  user                User     @relation("user_account", fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+
+model Session {
+  id           Int      @id @default(autoincrement())
+  sessionToken String   @unique
+  userId       Int
+  expires      DateTime
+  user         User     @relation("user_session",fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  id         Int      @id @default(autoincrement())
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
